@@ -1,0 +1,19 @@
+<h1>Todos</h1>
+
+<%= form_for(@task, remote: true) do |f| %>
+	<%= f.check_box :status  %>
+	<%= f.text_field :content %>
+	<%= f.submit %>
+<% end %>
+
+<ul id="todo-list">
+<%= render @tasks %>
+</ul>
+
+<div class="todo-filter">
+	<ul>
+		<li><%= link_to "All", all_tasks_path, remote: true %></li>
+		<li><%= link_to "Active", active_tasks_path, remote: true %></li>
+		<li><%= link_to "Completed", completed_tasks_path, remote: true %></li>
+	</ul>
+</div>

@@ -1,0 +1,13 @@
+<li id="task-list-<%= task.id %>">
+<div class="todo-item">
+<%= check_box_tag('status', Task.completed_status, task.completed?, { 'data-remote': 'true', 'data-method': 'put', 'data-url': toggle_status_task_path(task) }) %>
+<% if task.completed? %>
+<%= label_tag('content', task.content, { class: 'completed' }) %>
+<% else %>
+<%= label_tag('content', task.content) %>
+<% end %>
+<%= link_to "Delete", task_path(task.id), { remote: true, method: :delete, confirm: 'Are you sure to delete?' } %>
+</div>
+
+<%= text_field_tag("newcontent", task.content, { 'data-remote': 'true', 'data-method': 'put', 'data-url': update_content_task_path(task), 'class': 'edit' }) %>
+</li>
